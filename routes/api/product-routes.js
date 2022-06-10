@@ -10,17 +10,17 @@ router.get('/', (req, res) => {
   Product.findAll({
     attributes: [
       
-      'Product_name', 'price', 'stock'
+      'product_name', 'price', 'stock'
       
     ],
     include: [
       {
         model: "Category",
-        attributes: ['Category_name', 'product_name'],
+        attributes: ['category_name'],
       },
       {
         model: "Tag",
-        attricbutes: tag_name
+        attributes: ['tag_name']
       }
     ]
 
@@ -40,7 +40,7 @@ router.get('/:id', (req, res) => {
 
     attributes: [
       
-      'Product_name', 'price', 'stock'
+      'product_name', 'price', 'stock'
       
     ],
     include: [
@@ -50,7 +50,7 @@ router.get('/:id', (req, res) => {
       },
       {
         model: "Tag",
-        attricbutes: tag_name
+        attributes: tag_name
       }
     ]
 
@@ -73,9 +73,9 @@ router.post('/', (req, res) => {
     }
   */
   Product.create({
-    Product_name:  req.body.Product_name,
+    product_name:  req.body.product_name,
     price:  req.body.price,
-    stock:   req.body.srock,
+    stock:   req.body.stock,
     tagIds: req.body.tag_id,
   })
   req.body
