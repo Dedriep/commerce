@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
 
   Category.findAll({
     attributes: [
-      "Category_name"
+      "category_name"
     ],
     include: [
       {
@@ -65,7 +65,7 @@ router.put('/:id', (req, res) => {
 
   Category.update(
     {
-      Category_name: req.body.Category_name
+      category_name: req.body.category_name
     },
     { 
       where: 

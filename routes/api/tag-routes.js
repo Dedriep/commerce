@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
 
   Tag.findAll({
     attributes: [
-      'product_name'
+      'tag_name'
     ],
     include: [
       {
@@ -33,7 +33,7 @@ router.get('/:id', (req, res) => {
       id: req.params.id
     },
     attributes: [
-      tag_name
+     'tag_name'
     ]
  
   })
@@ -58,14 +58,16 @@ router.post('/', (req, res) => {
 router.put('/:id', (req, res) => {
   // update a tag's name by its `id` value
 
-  Tag.update({
+  Tag.update(
+    {
     tag_name: req.body.tag_name
   },
   { 
     where: 
     {id: req.params.id}
-  }
-  )
+  } )
+  .then(data => res.json(data))
+    .catch(err => console.log(err));
 });
 
 router.delete('/:id', (req, res) => {
